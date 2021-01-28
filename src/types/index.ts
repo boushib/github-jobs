@@ -11,3 +11,15 @@ export type JobModel = {
   url: string,
   how_to_apply: string,
 }
+
+export interface JobsState {
+  jobs: JobModel[]
+}
+
+export interface GlobalState {
+  jobsReducer: JobsState
+}
+
+export enum Action {
+  FETCH_JOBS
+}

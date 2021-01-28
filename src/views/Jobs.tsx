@@ -1,37 +1,45 @@
 import React from 'react'
-import api from '../api'
+import { connect, ConnectedProps } from 'react-redux'
+import { GlobalState, Action } from '../types'
 import Job from '../components/Job'
-import { JobModel } from '../models/Job'
 
-type State = {
-  jobs: JobModel[]
+const mapState = (state: GlobalState) => ({ jobs: state.jobsReducer.jobs })
+
+const mapDispatch = { fetchJobs: () => ({ type: Action.FETCH_JOBS }) }
+
+const connector = connect(mapState, mapDispatch)
+
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+interface Props extends PropsFromRedux {
+  // custom props goes here
 }
 
-class Jobs extends React.Component {
-  state: State = {
-    jobs: [],
+class Jobs extends React.Component<Props> {
+  async componentDidMount() {
+    this.props.fetchJobs()
   }
 
-  async componentDidMount() {
-    try {
-      const { data: jobs } = await api.get('/')
-      console.log(jobs)
-      this.setState({ jobs })
-    } catch (error) {
-      console.log(error)
-    }
+  handleClick(jobId: string) {
+    console.log('job id: ', jobId)
   }
 
   render() {
+    const { jobs, fetchJobs } = this.props
     return (
       <div className="jobs">
         <div className="container">
           <h1>Jobs List</h1>
-          {this.state.jobs.length ? this.state.jobs.map(job => <Job job={job} key={job.id} />) : <h2>Loading..</h2>}
+          <button onClick={fetchJobs}>Fetch jobs</button>
+          {jobs.length ? (
+            jobs.map(job => <Job job={job} onClick={() => this.handleClick(job.id)} key={job.id} />)
+          ) : (
+            <h2>Loading..</h2>
+          )}
         </div>
       </div>
     )
   }
 }
 
-export default Jobs
+export default connector(Jobs)
