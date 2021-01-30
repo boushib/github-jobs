@@ -1,7 +1,37 @@
 .job {
   background-color: #fafafa;
-  padding: 20px;
+  padding: 28px;
   margin: 10px 0;
   border: 1px solid #eee;
   border-radius: 4px;
+  cursor: pointer;
+  .date {
+    color: #aaa;
+  }
+  .company__name {
+    color: #3f51b5;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    .company__logo {
+      max-width: 100px;
+      max-height: 36px;
+      margin-top: 3px;
+      margin-left: 16px;
+    }
+  }
+  .description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-clamp: 4;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    margin-bottom: 16px;
+    * {
+      font-size: 15px;
+    }
+  }
 }

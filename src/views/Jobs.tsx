@@ -4,6 +4,8 @@ import { GlobalState } from '../types'
 import { fetchJobs } from '../store/actions/jobsAction'
 import Job from '../components/Job'
 
+import './Jobs.scss'
+
 const mapState = (state: GlobalState) => ({ jobs: state.jobsReducer.jobs })
 
 const mapDispatch = { fetchJobs }
