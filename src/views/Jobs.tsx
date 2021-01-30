@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect, ConnectedProps } from 'react-redux'
-import { GlobalState, Action } from '../types'
+import { GlobalState } from '../types'
+import { fetchJobs } from '../store/actions/jobsAction'
 import Job from '../components/Job'
 
 const mapState = (state: GlobalState) => ({ jobs: state.jobsReducer.jobs })
 
-const mapDispatch = { fetchJobs: () => ({ type: Action.FETCH_JOBS }) }
+const mapDispatch = { fetchJobs }
 
 const connector = connect(mapState, mapDispatch)
 
@@ -25,12 +26,12 @@ class Jobs extends React.Component<Props> {
   }
 
   render() {
-    const { jobs, fetchJobs } = this.props
+    const { jobs } = this.props
     return (
-      <div className="jobs">
+      <div className="jobs page">
         <div className="container">
           <h1>Jobs List</h1>
-          <button onClick={fetchJobs}>Fetch jobs</button>
+          {/* <button onClick={fetchJobs}>Fetch jobs</button> */}
           {jobs.length ? (
             jobs.map(job => <Job job={job} onClick={() => this.handleClick(job.id)} key={job.id} />)
           ) : (

@@ -17,10 +17,10 @@ const dummyJob = {
   how_to_apply: 'string',
 }
 
-const jobsReducer = (state: JobsState = initialState, action: { type: Action }) => {
+const jobsReducer = (state: JobsState = initialState, action: { type: Action, payload: any }) => {
   switch (action.type) {
     case Action.FETCH_JOBS:
-      return { ...state, jobs: [dummyJob], }
+      return { ...state, jobs: action.payload }
     default:
       return state
   }

@@ -7,10 +7,14 @@ type Props = {
 }
 
 const Job = ({ job, onClick }: Props) => {
-  const { title } = job
+  const { title, location, description, company } = job
   return (
     <div className="job" onClick={onClick}>
-      <h1>{title}</h1>
+      <h1>
+        {title} - {company}
+      </h1>
+      <p>Location: {location}</p>
+      <p>{description}</p>
     </div>
   )
 }

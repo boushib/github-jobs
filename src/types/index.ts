@@ -23,3 +23,5 @@ export interface GlobalState {
 export enum Action {
   FETCH_JOBS
 }
+
+// DispatchType = Type1(interface) | Type2(interface)

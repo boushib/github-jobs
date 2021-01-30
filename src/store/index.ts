@@ -1,6 +1,8 @@
-import { combineReducers } from 'redux'
-import jobsReducer from './reducers/jobsReducer'
+import { createStore, applyMiddleware } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import thunkMiddleware from 'redux-thunk'
+import rootReducer from './reducers/rootReducer'
+const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware))
 
-const rootReducer = combineReducers({ jobsReducer })
-
-export default rootReducer
+const store = createStore(rootReducer, composedEnhancer)
+export default store

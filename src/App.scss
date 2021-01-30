@@ -3,10 +3,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 .app {
-  text-align: center;
+  padding-top: 58px;
+  .page {
+    padding: 40px 0;
+  }
 }
 
 ul {
