@@ -5,7 +5,7 @@ const Navbar = () => (
   <nav>
     <div className="container">
       <div className="nav__inner">
-        <div className="nav__brand">Github Jobs</div>
+        <div className="nav__brand">GitHub Jobs</div>
         <ul className="main-menu">
           <li>
             <NavLink to="/">Home</NavLink>
