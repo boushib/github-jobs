@@ -14,7 +14,7 @@ const Job = ({ job, onClick }: Props) => {
         {title} - {company}
       </h1>
       <p>Location: {location}</p>
-      <p>{description}</p>
+      <p dangerouslySetInnerHTML={{ __html: description }} />
     </div>
   )
 }
